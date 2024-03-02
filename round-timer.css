@@ -1,0 +1,186 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("CourierPrime-Italic.ttf");
+}
+
+body {
+  /* background: linear-gradient(
+    to top,
+    rgba(217, 0, 255, 0.831),
+    rgba(217, 0, 255, 0.286),
+    #fff
+  ); */
+  color: #ff0000;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+}
+
+.outter-container {
+  background: transparent;
+  min-width: 50%;
+  /* margin: 0 auto; */
+  height: 50vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: 9px double #fff;
+  overflow: hidden;
+}
+
+.middle-shape {
+  min-width: 85%;
+  height: 40vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: 9px double #fff;
+  overflow: hidden;
+  position: absolute;
+  background: transparent;
+}
+
+.outter-circle {
+  min-width: 300px;
+  height: 300px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: rgb(217, 0, 255) double 10px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inner-circle {
+  width: 250px;
+  height: 250px;
+  background: rgb(217, 0, 255);
+  border-radius: 50%;
+  border: #fff double 10px;
+  /* margin: 0 auto; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  font-size: 32px;
+  color: #fff;
+  font-family: "myFont", sans-serif;
+}
+
+.timer-add {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn img {
+  width: 30px;
+  filter: invert(1);
+}
+
+.btn h4 {
+  color: rgb(217, 0, 255);
+  background: #fff;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  font-size: 10px;
+}
+
+.btn {
+  position: absolute;
+  background: transparent;
+  border-radius: 10px;
+  border: #fff solid 2px;
+  outline: none;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 12;
+}
+
+.btn.start {
+  left: 0;
+  bottom: 30%;
+  margin-inline: 10px;
+}
+
+.btn.pause {
+  bottom: 30%;
+  z-index: 10;
+}
+
+.btn.stop {
+  right: 0;
+  bottom: 30%;
+  margin-inline: 10px;
+}
+
+/* ...................... GLOWING AND ROTATING BORDER ........................... */
+
+.outter-container::before {
+  content: "";
+  width: 200px;
+  height: 1800px;
+  background: linear-gradient(315deg, #00ccff, #d400d4);
+  position: absolute;
+  inset: -100% 60%;
+  transition: 0.5s;
+  animation: animate 4s linear infinite;
+  z-index: -4;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.outter-container::after {
+  content: "";
+  position: absolute;
+  background: rgb(0, 0, 0);
+  inset: 10px;
+  border-radius: 0.3%;
+  z-index: -1;
+}
+
+.outter-container:hover::before {
+  width: 0%;
+}
